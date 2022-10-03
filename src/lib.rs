@@ -1,16 +1,18 @@
+mod utils;
 mod frac;
 
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use crate::frac::Frac;
+    use crate::utils::{Integer, SymbolNumber};
 
     #[test]
     fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+        let f = Frac {
+            numerator: Box::new(Integer { value: 12 }),
+            denominator: Box::new(Integer { value: 13 }),
+        };
+        f.display()
     }
 }
