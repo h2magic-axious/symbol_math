@@ -1,6 +1,5 @@
 use std::cmp::max;
 use std::ops::Add;
-use std::slice::range;
 use crate::symbol_number::base::{Double, Integer, SymbolNumber};
 use crate::utils::merge_vector;
 
