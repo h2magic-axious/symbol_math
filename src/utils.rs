@@ -1,41 +1,17 @@
-pub trait SymbolNumber {
-    fn result(&self) -> f64;
-    fn display(&self);
-    fn to_string(&self) -> String;
-}
-
-pub struct Integer {
-    pub value: i32,
-}
-
-impl SymbolNumber for Integer {
-    fn result(&self) -> f64 {
-        self.value as f64
+pub fn merge_vector<T>(v1: &Vec<T>, v2: &Vec<T>) -> Vec<T> {
+    if v1.len() > v2.len() {
+        return merge_vector(v2, v1);
     }
 
-    fn display(&self) {
-        println!("{}", self.value)
+    let mut result = Vec::new();
+
+    for i in 0..v1.len() {
+        result.push(v1.get(i).unwrap() + v2.get(i).unwrap());
     }
 
-    fn to_string(&self) -> String {
-        self.value.to_string()
-    }
-}
-
-pub struct Float {
-    pub value: f64,
-}
-
-impl SymbolNumber for Float {
-    fn result(&self) -> f64 {
-        self.value
+    for i in v2.len()..v1.len() {
+        result.push(v1.get(i).unwrap())
     }
 
-    fn display(&self) {
-        println!("{}", self.value)
-    }
-
-    fn to_string(&self) -> String {
-        self.value.to_string()
-    }
+    result
 }
